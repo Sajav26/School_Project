@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import connectDB from './config/mongo.js';
 import router from './routes/auth.js';
+import userRouter from './routes/user.js';
 
 dotenv.config();
 const app = express();
@@ -15,6 +16,7 @@ app.use(cors({credentials: true}));
 app.use(cookieParser());
 
 app.use('/api/auth', router);
+app.use('/api/user', userRouter);
 
 app.listen(port, () => (
     console.log(`Server is running on port ${port}`)
